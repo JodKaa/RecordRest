@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using RecordRest.Managers;
 using RecordRest.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -13,11 +15,15 @@ namespace RecordRest.Controllers
     [ApiController]
     public class RecordsController : ControllerBase
     {
+        private readonly RecordManager _manager = new RecordManager();
+
         // GET: api/<RecordsController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public IEnumerable<Record> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _manager.GetAllRecords();
         }
 
         // GET api/<RecordsController>/5
