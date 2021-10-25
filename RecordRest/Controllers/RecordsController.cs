@@ -20,10 +20,9 @@ namespace RecordRest.Controllers
         // GET: api/<RecordsController>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IEnumerable<Record> Get()
+        public ActionResult<IEnumerable<Record>> Get()
         {
-            return _manager.GetAllRecords();
+            return Ok(_manager.GetAllRecords());
         }
 
         // GET api/<RecordsController>/5
