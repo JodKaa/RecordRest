@@ -17,9 +17,15 @@ namespace RecordRest.Managers.Tests
         [TestMethod()]
         public void GetAllRecordsTest()
         {
-            List<Record> list = _manager.GetAllRecords();
+            List<Record> list = _manager.GetAllRecords("");
 
             Assert.AreEqual(2, list.Count);
+
+            string keyword = "Michael Jackson";
+            List<Record> filterList = _manager.GetAllRecords(keyword);
+            bool exists = filterList[0].Artist.Contains(keyword);
+            Assert.IsTrue(exists);
         }
+
     }
 }

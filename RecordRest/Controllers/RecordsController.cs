@@ -20,9 +20,9 @@ namespace RecordRest.Controllers
         // GET: api/<RecordsController>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult<IEnumerable<Record>> Get()
+        public ActionResult<IEnumerable<Record>> Get([FromQuery]string keyword)
         {
-            return Ok(_manager.GetAllRecords());
+            return Ok(_manager.GetAllRecords(keyword));
         }
 
         // GET api/<RecordsController>/5

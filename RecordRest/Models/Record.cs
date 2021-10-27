@@ -23,5 +23,11 @@ namespace RecordRest.Models
         public Record()
         {
         }
+
+        public override string ToString()
+        {
+            // Duration is not included, because we use this method for filtering. Duration is an unreliable search variable.
+            return $"{Title}, {Artist}, {PublicationYear}";
+        }
     }
 }
