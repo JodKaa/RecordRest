@@ -66,8 +66,7 @@ jobs:
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
         publish-profile: ${{ secrets.RecordRestPairProgramming_c44f }}
     - name: Azure Login
-      #uses: azure/login@v1
-      uses: RECORD_SECRET@v1
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.RecordRestapi_spn }}
     - name: Import API into Azure API Management
